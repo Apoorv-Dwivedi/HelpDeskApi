@@ -1,0 +1,75 @@
+
+############################################
+# Java
+############################################
+*.class
+*.log
+hs_err_pid*
+replay_pid*
+
+############################################
+# Maven
+############################################
+**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+############################################
+# IntelliJ IDEA
+############################################
+.idea/
+*.iml
+*.iws
+out/
+
+############################################
+# Eclipse
+############################################
+.classpath
+.project
+.settings/
+
+############################################
+# VS Code
+############################################
+.vscode/
+
+############################################
+# Environment variables and secrets
+############################################
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+secrets/
+secrets.*
+
+############################################
+# Local application configuration
+############################################
+application-local.properties
+application-local.yml
+application-local.yaml
+application-*.local.properties
+application-*.local.yml
+application-*.local.yaml
+
+############################################
+# Operating system
+############################################
+.DS_Store
+Thumbs.db
+desktop.ini
+
+############################################
+# Temporary files
+############################################
+*.tmp
+*.swp
+*.bak
