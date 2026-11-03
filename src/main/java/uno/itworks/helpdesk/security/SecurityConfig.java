@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import uno.itworks.helpdesk.service.AppOidcUserService;
 
 @Configuration
 @EnableWebSecurity
@@ -14,11 +15,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
+    SecurityFilterChain securityFilterChain(HttpSecurity http, AppOidcUserService oidcUserService)throws Exception{
         http.
              authorizeHttpRequests(auth -> auth.requestMatchers("/public/**").permitAll()
+                     .requestMatchers("/admin/**").hasRole("ADMIN")
                      .anyRequest().authenticated()).
-             oauth2Login(Customizer.withDefaults());
+             oauth2Login(oauth ->
+                     oauth.userInfoEndpoint(ui -> ui.oidcUserService(oidcUserService)));
 
         return http.build();
 

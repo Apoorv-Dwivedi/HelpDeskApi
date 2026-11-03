@@ -25,7 +25,8 @@ spring:
               - openid
               - profile
               - email
-
+app:
+  bootstrap-admin-email: myemail@gmail.com
 
 logging:
   level:
