@@ -1,3 +1,32 @@
 spring:
+  config:
+    import:
+      - optional:file:/home/apoorv/Desktop/Projects/HelpDeskApi/.env[.properties]
   application:
     name: HelpdeskApi
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/helpdeskDb}
+    username: admin
+    password: ${DB_PASSWORD:pass2helpdeskdb}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${client-id}
+            client-secret: ${client-secret}
+            scope:
+              - openid
+              - profile
+              - email
+
+
+logging:
+  level:
+    org.springframework.security: Debug
